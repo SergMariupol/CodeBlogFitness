@@ -16,9 +16,26 @@ namespace CodeBlogFitness.BL.Controller
         /// создание нового пользователя
         /// </summary>
         /// <param name="user"></param>
-        public UserController(User user)
+        public UserController(string userName, string genderName, DateTime birthDate, double weight, double height)
+        {//проверка
+            var gender = new Gender(genderName);
+            User = new User(userName, gender, birthDate, weight, height);
+        }
+        /// <summary>
+        /// получить данные пользователя
+        /// </summary>
+        /// <returns>пользователь приложения</returns>
+        public UserController()
         {
-            User = user ?? throw new ArgumentNullException("Пользователь не может быть равен Null"nameof(user));
+            var formatter = new BinaryFormatter();
+            using (var fs = new FileStream("Users.dat", FileMode.OpenOrCreate))
+            {
+                if (formatter.Deserialize(fs) is User user)
+                {
+                    User = user;
+                }
+                //TODO: Что делать, если пользователь не прочитали
+            }
         }
         /// <summary>
         /// сохранить данные пользователя
@@ -31,18 +48,7 @@ namespace CodeBlogFitness.BL.Controller
                 formatter.Serialize(fs, User);
             }
         }
-        /// <summary>
-        /// получить данные пользователя
-        /// </summary>
-        /// <returns>пользователь приложения</returns>
-       public User Load()
-        {
-            var formatter = new BinaryFormatter();
-            using (var fs = new FileStream("Users.dat", FileMode.OpenOrCreate))
-            {               
-               return formatter.Deserialize(fs) as User;           
-            }
-        }
+       
 
     }
 }

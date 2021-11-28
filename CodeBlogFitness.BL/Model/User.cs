@@ -49,7 +49,7 @@ namespace CodeBlogFitness.BL.Model
             {
                 throw new ArgumentNullException("Имя пользователя не может быть пустым", nameof(name));
             }
-            if (Gender == null)
+            if (gender == null)
             {
                 throw new ArgumentNullException("Пол не может быть Null", nameof(gender));
             }
@@ -57,11 +57,11 @@ namespace CodeBlogFitness.BL.Model
             {
                 throw new ArgumentNullException("Невозможная дата рождения", nameof(birthdate));
             }            
-            if (Weight <= 0)
+            if (weight <= 0)
             {
                 throw new ArgumentNullException("Вес не может быть меньше либо равен 0", nameof(Weight));
             }
-            if (Height <= 0)
+            if (height <= 0)
             {
                 throw new ArgumentNullException("Рост не может быть меньше либо равен 0", nameof(Weight));
             }
