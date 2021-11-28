@@ -1,5 +1,7 @@
-﻿using System;
-
+﻿using CodeBlogFitness.BL.Model;
+using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace CodeBlogFitness.BL.Controller
 {/// <summary>
@@ -24,9 +26,9 @@ namespace CodeBlogFitness.BL.Controller
         public void Save()
         {
             var formatter = new BinaryFormatter();
-            using (var fs = new FileStream("Users.dat", filemode.OpenOrCreate))
+            using (var fs = new FileStream("Users.dat", FileMode.OpenOrCreate))
             {
-                formatter.serialize(fs, User);
+                formatter.Serialize(fs, User);
             }
         }
         /// <summary>
@@ -36,9 +38,9 @@ namespace CodeBlogFitness.BL.Controller
        public User Load()
         {
             var formatter = new BinaryFormatter();
-            using (var fs = new FileStream("Users.dat", filemode.OpenOrCreate))
+            using (var fs = new FileStream("Users.dat", FileMode.OpenOrCreate))
             {               
-               return formatter.deserialize(fs) as User;           
+               return formatter.Deserialize(fs) as User;           
             }
         }
 
