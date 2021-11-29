@@ -16,11 +16,11 @@ namespace CodeBlogFitness.BL.Model
         /// <summary>
         /// пол
         /// </summary>
-        public Gender Gender { get; }
+        public Gender Gender { get; set; }
         /// <summary>
         /// дата рождения
         /// </summary>
-        public DateTime BirthDate { get; }
+        public DateTime BirthDate { get; set; }
         /// <summary>
         /// вес
         /// </summary>

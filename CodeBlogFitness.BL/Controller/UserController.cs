@@ -70,8 +70,15 @@ namespace CodeBlogFitness.BL.Controller
             return null;
         }
 
-        public void SetNewUserData(string genderName, DateTime bithDate, double weight, double height)
+        public void SetNewUserData(string genderName, DateTime bithDate, double weight=1, double height=1)
         {
+            //проверка
+            CurrentUser.Gender = new Gender(genderName);
+            CurrentUser.BirthDate = bithDate;
+            CurrentUser.Weight = weight;
+            CurrentUser.Height = height;
+            Save();
+
 
         }
         /// <summary>
