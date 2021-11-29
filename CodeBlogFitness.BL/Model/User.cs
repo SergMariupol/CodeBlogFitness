@@ -91,7 +91,7 @@ namespace CodeBlogFitness.BL.Model
         }
         public override string ToString()
         {
-            return Name + " " + Height;
+            return Name + " " + Age;
         }
 
 
