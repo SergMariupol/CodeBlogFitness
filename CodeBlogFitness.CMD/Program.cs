@@ -15,8 +15,13 @@ namespace CodeBlogFitness.CMD
             var usercontroller = new UserController(name);
             if (usercontroller.IsNewUser)
             {
+
+
+
                 Console.WriteLine("Введите пол");
-                var gender =   Console.ReadLine();
+                //  var gender =   Console.ReadLine();
+                var gender = new BL.Model.Gender(Console.ReadLine());
+
                 var birthDate = ParseDateTime();
                 var weight = ParseDouble("Вес");
                 var height = ParseDouble("Рост");

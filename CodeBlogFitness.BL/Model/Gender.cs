@@ -32,5 +32,10 @@ namespace CodeBlogFitness.BL.Model
         {
             return Name;
         }
+
+        public static implicit operator string(Gender v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
