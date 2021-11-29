@@ -29,6 +29,13 @@ namespace CodeBlogFitness.BL.Model
         /// рост
         /// </summary>
         public double Height { get; set; }
+
+        public int  Age 
+        { get 
+            { 
+                return DateTime.Now.Year - BirthDate.Year; 
+            } 
+        }
         #endregion
         /// <summary>
         /// создать нового пользователя
@@ -73,9 +80,18 @@ namespace CodeBlogFitness.BL.Model
             Weight = weight;
             Height = height;
         }
+
+        public User(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException("Имя пользователя не может быть пустым", nameof(name));
+            }
+            Name = name;
+        }
         public override string ToString()
         {
-            return Name;
+            return Name + " " + Height;
         }
 
 
