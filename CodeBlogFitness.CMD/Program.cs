@@ -1,4 +1,5 @@
 ﻿using CodeBlogFitness.BL.Controller;
+using CodeBlogFitness.BL.Model;
 using System;
 
 namespace CodeBlogFitness.CMD
@@ -20,7 +21,9 @@ namespace CodeBlogFitness.CMD
 
                 Console.WriteLine("Введите пол");
                 //  var gender =   Console.ReadLine();
-                var gender = new BL.Model.Gender(Console.ReadLine());
+                string gender = new Gender(Console.ReadLine()).ToString();
+
+               
 
                 var birthDate = ParseDateTime();
                 var weight = ParseDouble("Вес");

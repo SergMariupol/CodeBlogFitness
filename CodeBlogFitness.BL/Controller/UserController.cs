@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization.Json;
 
 namespace CodeBlogFitness.BL.Controller
 {/// <summary>
@@ -49,6 +50,9 @@ namespace CodeBlogFitness.BL.Controller
             //var gender = new Gender(genderName);
            // Users = new User(userName, gender, birthDate, weight, height);
         }
+
+     
+
         /// <summary>
         /// получить список пользователей
         /// </summary>
@@ -56,6 +60,7 @@ namespace CodeBlogFitness.BL.Controller
         private List<User> GetUsersData()
         {
             var formatter = new BinaryFormatter();
+            //var formatter = new DataContractJsonSerializer();
             using (var fs = new FileStream("Users.dat", FileMode.OpenOrCreate))
             {
                 if (formatter.Deserialize(fs) is List<User> users)
