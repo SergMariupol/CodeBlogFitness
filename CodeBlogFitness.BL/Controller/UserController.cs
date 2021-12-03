@@ -61,11 +61,16 @@ namespace CodeBlogFitness.BL.Controller
         {
             var formatter = new BinaryFormatter();
             //var formatter = new DataContractJsonSerializer();
-            using (var fs = new FileStream("Users.dat", FileMode.OpenOrCreate))
+            using (var fs = new FileStream("Userss.dat", FileMode.OpenOrCreate))
             {
-                if (formatter.Deserialize(fs) is List<User> users)
+                if (fs.Length != 0)
+
+                  //  if (formatter.Deserialize(fs) is List<User> users)
                 {
-                    return users;
+                  // var users = ;
+                    return (List<User>)formatter.Deserialize(fs);
+                   // return users;
+                    //return users;
                 } 
                 else
                 {
@@ -92,7 +97,7 @@ namespace CodeBlogFitness.BL.Controller
         public void Save()
         {
             var formatter = new BinaryFormatter();
-            using (var fs = new FileStream("Users.dat", FileMode.OpenOrCreate))
+            using (var fs = new FileStream("Userss.dat", FileMode.OpenOrCreate))
             {
                 formatter.Serialize(fs, Users);
             }
